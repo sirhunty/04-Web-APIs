@@ -5,6 +5,8 @@ var buttonOne = document.querySelector("#btn-1");
 var buttonTwo = document.querySelector("#btn-2");
 var buttonThree = document.querySelector("#btn-3");
 var buttonFour = document.querySelector("#btn-4");
+// var correct = document.querySelector("#correct");
+// var incorrect = document.querySelector("incorrect");
 var questionContainer = document.querySelector("#question-container");
 var questionRound = 0;
 var intervalId;
@@ -23,7 +25,31 @@ var questions = [
     choices: ["quotes", "curly brackets", "parentheses", "square brackets"],
     answer: "parentheses"
   },
-  ///etc.
+  {
+    title: "JavaScript is...",
+    choices: ["the same as Java", "a fundamental programming language", "not useful in modern web development", "used to make static web pages"],
+    answer: "a fundamental programming language"
+  },
+  {
+    title: "Every variable is made up of a ______ and a _______.",
+    choices: ["title, value", "key, property", "name, value", "name, number"],
+    answer: "name, value"
+  },
+  {
+    title: "The joining of two strings together is called ________.",
+    choices: ["conclusion", "confirmation", "addition", "concatenation"],
+    answer: "concatenation"
+  },
+  {
+    title: "A useful function for debugging is ________().",
+    choices: ["console.log", "confirm.log", "click.log", "console.com"],
+    answer: "console.log"
+  },
+  {
+    title: "What does DRY stand for?",
+    choices: ["Don't Reveal Yourself", "Don't Repeat Yourself", "Do Repeat Yourself", "Don't wReck Yourself"],
+    answer: "Don't Repeat Yourself"
+  }
 ];
 
 
@@ -43,6 +69,8 @@ function startGame() {
   setnextQuestion(0);
   questionRound = 0;
   generate.hidden = true;
+  // correct.hidden = true;
+  // incorrect.hidden = true;
 }
 
 function setnextQuestion(index) {
@@ -63,7 +91,11 @@ function selectAnswer() {
   } else {
     setnextQuestion(questionRound);
   }
+  if (selectAnswer === questions[questionRound].answer) {
+    correct++;
+    console.log()
 
+  }
 }
 
 document.querySelector("#generate").addEventListener("click", startGame);
@@ -73,5 +105,6 @@ buttonThree.addEventListener("click", selectAnswer);
 buttonFour.addEventListener("click", selectAnswer);
 
 
-
+let correct = 0
+let incorrect = 0
 
